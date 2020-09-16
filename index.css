@@ -48,6 +48,8 @@ body {
       color: white;
   }
 
+}
+
   .content h1
    {
       padding-top: 20px;
@@ -56,3 +58,70 @@ body {
   .content p {
 
   }
+ 
+/* SEMINARIE.HTML */ 
+
+.seminarie {
+  background: rgb(0 0 0 / 40%);
+  width: 40%;
+  height: 40%;
+  margin: 200px auto 90px auto;
+  border-radius: 10px;
+  box-shadow: 14px 10px 14px 1px rgba(0,0,0,0.75);
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+} 
+.seminarie h1 {
+  text-align: center;
+}
+.seminarie ul {
+  list-style: none;
+}
+.seminarie a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ABOUT.HTML */
+
+.about {
+  background: rgb(0 0 0 / 40%);
+  width: 40%;
+  height: 40%;
+  margin: 200px auto 90px auto;
+  border-radius: 10px;
+  box-shadow: 14px 10px 14px 1px rgba(0,0,0,0.75);
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  text-align: center;
+} 
+
+/* SEMINARIEINFO.HTML */
+
+.seminarieInfo{
+  background: rgb(0 0 0 / 40%);
+  width: 40%;
+  height: 40%;
+  margin: 200px auto 90px auto;
+  border-radius: 10px;
+  box-shadow: 14px 10px 14px 1px rgba(0,0,0,0.75);
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  text-align: center;
+  
+}
+.seminarieInfo button{
+  border-radius: 5px;
+  background-color: white;
+ 
+  
+  
+}
+.seminarieInfo button:hover{
+  background-color: grey;
+  cursor: pointer;
+}
+.seminarieInfo a{
+  text-decoration: none;
+  color: black;
+}
