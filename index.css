@@ -125,3 +125,62 @@ body {
   text-decoration: none;
   color: black;
 }
+
+/* LOGIN.HTML */
+
+.login{
+  background: rgb(0 0 0 / 40%);
+  width: 40%;
+  height: auto;
+  min-height: 40%;
+  margin: 200px auto 90px auto;
+  border-radius: 10px;
+  box-shadow: 14px 10px 14px 1px rgba(0,0,0,0.75);
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  
+  
+}
+.login h1 {
+  padding-top: 33px;
+  text-align: center;
+}
+.login input {
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  height: 24px;
+  margin-top: 3px;
+}
+.login form {
+  width: 260px;
+  margin: 50px auto 50px auto;
+  position: relative;
+  height: 160px;
+  
+}
+.login label{
+  text-align: start;
+  font-size: small;
+  
+}
+.login button{
+ position: absolute;
+ bottom: 0;
+ left: 35%;
+ transition-duration: 0.2s;
+ height: 30px;
+ width: 70px;
+ border-radius: 7px;
+ border: none;
+ 
+}
+.login button:hover {
+  background-color: #325aa8;
+  color: white;
+  cursor: pointer;
+}
+.login p {
+  text-align: center;
+  padding-bottom: 20px;
+}
