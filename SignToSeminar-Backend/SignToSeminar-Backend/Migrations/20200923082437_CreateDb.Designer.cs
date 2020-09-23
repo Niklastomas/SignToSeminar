@@ -9,7 +9,7 @@ using SignToSeminar_Backend.Models;
 
 namespace SignToSeminar_Backend.Migrations
 {
-    [DbContext(typeof(SeminarContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200923082437_CreateDb")]
     partial class CreateDb
     {

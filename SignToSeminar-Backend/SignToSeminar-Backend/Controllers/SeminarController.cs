@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SignToSeminar_Backend.Models;
 using SignToSeminar_Backend.ViewModel;
 
@@ -16,9 +17,14 @@ namespace SignToSeminar_Backend.Controllers
     {
         // GET: api/<SeminarController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Seminar> Get()
         {
-            return new string[] { "value1", "value2" };
+            using (var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.Include(s => s.UserList).ToArray();
+                return seminar;
+
+            }
         }
 
         // GET api/<SeminarController>/5
@@ -33,7 +39,7 @@ namespace SignToSeminar_Backend.Controllers
         public void Post([FromBody] SeminarViewModel s)
         {
          
-            using( var context = new SeminarContext())
+            using( var context = new ApplicationDbContext())
             {
                 var newSeminar = new Seminar { Title = s.Title, Date = s.Date, Location = s.Location };
                 context.Seminars.Add(newSeminar);
