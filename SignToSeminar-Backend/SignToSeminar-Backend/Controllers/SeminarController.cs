@@ -41,7 +41,7 @@ namespace SignToSeminar_Backend.Controllers
          
             using( var context = new ApplicationDbContext())
             {
-                var newSeminar = new Seminar { Title = s.Title, Date = s.Date, Location = s.Location };
+                var newSeminar = new Seminar { Title = s.Title, Date = s.Date, Location = s.Location};
                 context.Seminars.Add(newSeminar);
                 context.SaveChanges();
                 
@@ -53,6 +53,7 @@ namespace SignToSeminar_Backend.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+           
         }
 
         // DELETE api/<SeminarController>/5

@@ -16,16 +16,24 @@ namespace SignToSeminar_Backend.Controllers
     {
         // GET: api/<UserController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<User> Get()
         {
-            return new string[] { "value1", "value2" };
+            using (var context = new ApplicationDbContext())
+            {
+                var users = context.Users.ToArray();
+                return users;
+                
+            }
         }
+
+
+
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public void Get(int id)
         {
-            return "value";
+           
         }
 
         // POST api/<UserController>
@@ -35,7 +43,7 @@ namespace SignToSeminar_Backend.Controllers
 
             using (var context = new ApplicationDbContext())
             {
-                var newUser = new User { FirstName = u.FirstName, LastName = u.LastName};
+                var newUser = new User { FirstName = u.FirstName, LastName = u.LastName, SeminarId = u.SeminarId };
                 context.Users.Add(newUser);
                 context.SaveChanges();
 
@@ -44,8 +52,27 @@ namespace SignToSeminar_Backend.Controllers
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public string Put(int id, [FromBody] UserViewModel userVM)
         {
+           using(var context = new ApplicationDbContext())
+            {
+                var user = context.Users.Where(user => user.Id == id).FirstOrDefault<User>();
+
+                if (user != null)
+                {
+                    user.FirstName = userVM.FirstName;
+                    user.LastName = userVM.LastName;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return "Not Found";
+
+                }
+            }
+
+            return "Ok";
+
         }
 
         // DELETE api/<UserController>/5
