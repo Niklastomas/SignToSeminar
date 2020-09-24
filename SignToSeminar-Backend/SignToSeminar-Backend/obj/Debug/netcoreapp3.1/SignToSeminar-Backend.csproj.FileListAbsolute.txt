@@ -2,7 +2,6 @@ D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Back
 D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\SignToSeminar-Backend.exe
-D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.csprojAssemblyReference.cache
 D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.AssemblyInfoInputs.cache
 D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.AssemblyInfo.cs
 D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.RazorTargetAssemblyInfo.cache

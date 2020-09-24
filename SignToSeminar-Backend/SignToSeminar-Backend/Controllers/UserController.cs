@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -37,10 +36,10 @@ namespace SignToSeminar_Backend.Controllers
         {
            using (var context = new ApplicationDbContext())
             {
-                var user = context.Users.Where(user => user.UserId == id).FirstOrDefault<User>();
 
-                
-
+                var userSeminars = context.UserSeminars.Where(user => user.UserId == id).ToList();
+              
+                return userSeminars;
             }
         }
 
