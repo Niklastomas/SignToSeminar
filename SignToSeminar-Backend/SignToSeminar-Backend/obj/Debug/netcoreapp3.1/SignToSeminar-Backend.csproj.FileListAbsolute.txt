@@ -116,8 +116,6 @@ C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignT
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.dll
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.pdb
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.genruntimeconfig.cache
-D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.csproj.CoreCompileInputs.cache
-D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.csproj.CoreCompileInputs.cache
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
@@ -127,3 +125,9 @@ C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignT
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Rasmu\Documents\SignToSeminar\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.csprojAssemblyReference.cache
+D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.csprojAssemblyReference.cache
+D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.csproj.CoreCompileInputs.cache
+D:\Users\Niklas\Documents\SignToSeminar\SignToSeminar-Backend\SignToSeminar-Backend\obj\Debug\netcoreapp3.1\SignToSeminar-Backend.MvcApplicationPartsAssemblyInfo.cache

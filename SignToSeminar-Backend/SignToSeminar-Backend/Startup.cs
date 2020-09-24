@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SignToSeminar_Backend.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace SignToSeminar_Backend
 {
@@ -27,8 +28,14 @@ namespace SignToSeminar_Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+
             services.AddControllers();
+            services.AddMvc()
+     .AddNewtonsoftJson(
+          options => {
+              options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+          });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
