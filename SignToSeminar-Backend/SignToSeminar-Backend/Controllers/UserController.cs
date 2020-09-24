@@ -20,8 +20,9 @@ namespace SignToSeminar_Backend.Controllers
         {
             using (var context = new ApplicationDbContext())
             {
-                var users = context.Users.ToArray();
-                return users;
+
+                var user = context.Users.ToList();
+                return user;
                 
             }
         }
