@@ -20,7 +20,7 @@ namespace SignToSeminar_Backend.Migrations
 
             modelBuilder.Entity("SignToSeminar_Backend.Models.Seminar", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SeminarId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -34,14 +34,14 @@ namespace SignToSeminar_Backend.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("SeminarId");
 
                     b.ToTable("Seminars");
                 });
 
             modelBuilder.Entity("SignToSeminar_Backend.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -52,21 +52,37 @@ namespace SignToSeminar_Backend.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SeminarId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SeminarId");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("SignToSeminar_Backend.Models.User", b =>
+            modelBuilder.Entity("SignToSeminar_Backend.Models.UserSeminar", b =>
                 {
-                    b.HasOne("SignToSeminar_Backend.Models.Seminar", null)
-                        .WithMany("UserList")
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SeminarId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "SeminarId");
+
+                    b.HasIndex("SeminarId");
+
+                    b.ToTable("UserSeminars");
+                });
+
+            modelBuilder.Entity("SignToSeminar_Backend.Models.UserSeminar", b =>
+                {
+                    b.HasOne("SignToSeminar_Backend.Models.Seminar", "Seminar")
+                        .WithMany("UserSeminars")
                         .HasForeignKey("SeminarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SignToSeminar_Backend.Models.User", "User")
+                        .WithMany("UserSeminars")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

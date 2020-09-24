@@ -17,15 +17,15 @@ namespace SignToSeminar_Backend.Controllers
     {
         // GET: api/<SeminarController>
         [HttpGet]
-        public IEnumerable<Seminar> Get()
-        {
-            using (var context = new ApplicationDbContext())
-            {
-                var seminar = context.Seminars.Include(s => s.UserList).ToArray();
-                return seminar;
+        //public IEnumerable<Seminar> Get()
+        //{
+        //    using (var context = new ApplicationDbContext())
+        //    {
+        //        //var seminar = context.Seminars.Include(s => s.UserList).ToArray();
+        //        //return "seminar";
 
-            }
-        }
+        //    }
+        //}
 
         // GET api/<SeminarController>/5
         [HttpGet("{id}")]

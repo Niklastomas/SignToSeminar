@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,15 @@ namespace SignToSeminar_Backend.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public void Get(int id)
+        public IEnumerable<UserSeminar> Get(int id)
         {
-           
+           using (var context = new ApplicationDbContext())
+            {
+                var user = context.Users.Where(user => user.UserId == id).FirstOrDefault<User>();
+
+                
+
+            }
         }
 
         // POST api/<UserController>
@@ -44,7 +51,7 @@ namespace SignToSeminar_Backend.Controllers
 
             using (var context = new ApplicationDbContext())
             {
-                var newUser = new User { FirstName = u.FirstName, LastName = u.LastName, SeminarId = u.SeminarId };
+                var newUser = new User { FirstName = u.FirstName, LastName = u.LastName };
                 context.Users.Add(newUser);
                 context.SaveChanges();
 
@@ -57,7 +64,7 @@ namespace SignToSeminar_Backend.Controllers
         {
            using(var context = new ApplicationDbContext())
             {
-                var user = context.Users.Where(user => user.Id == id).FirstOrDefault<User>();
+                var user = context.Users.Where(user => user.UserId == id).FirstOrDefault<User>();
 
                 if (user != null)
                 {
