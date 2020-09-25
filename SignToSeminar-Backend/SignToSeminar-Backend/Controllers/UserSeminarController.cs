@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignToSeminar_Backend.Models;
+using SignToSeminar_Backend.ViewModel;
 
 
 
@@ -22,16 +23,46 @@ namespace SignToSeminar_Backend.Controllers
         {
             using(var context = new ApplicationDbContext())
             {
-                var userSeminar = context.UserSeminars.Include(u => u.User).Include(u => u.Seminar).ToArray();
-                return userSeminar;
+                var userSeminars = context.UserSeminars.Include(u => u.User).Include(u => u.Seminar).ToArray();
+                return userSeminars;
+
+
             }
         }
 
         // GET api/<UserSeminarController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("user/{id}")]
+        public UserViewModel Get(int id)
         {
-            return "value";
+            using(var context = new ApplicationDbContext())
+            {
+                var seminars = new List<Seminar>();
+
+                var user = context.UserSeminars.Where(u => u.UserId == id).Include(u => u.User).FirstOrDefault();
+
+                var userVM = new UserViewModel
+                {
+                    FirstName = user.User.FirstName,
+                    LastName = user.User.LastName
+                };
+
+
+                var userSeminars = context.UserSeminars.Where(u => u.UserId == id).Include(u => u.Seminar).ToArray();
+                
+                foreach (var userSeminar in userSeminars)
+                {
+                    if (userSeminar.Seminar != null)
+                    {
+                        seminars.Add(userSeminar.Seminar);
+
+                    }
+                    
+                }
+                userVM.SeminarList = seminars;
+                
+                return userVM;
+
+            }
         }
 
         // POST api/<UserSeminarController>

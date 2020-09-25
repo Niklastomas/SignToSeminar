@@ -81,15 +81,49 @@ namespace SignToSeminar_Backend.Controllers
 
         // PUT api/<SeminarController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public string Put(int id, [FromBody] SeminarViewModel seminarVM)
         {
-           
+            using (var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.Where(s => s.SeminarId == id).FirstOrDefault();
+
+                if (seminar != null)
+                {
+                    seminar.Title = seminarVM.Title;
+                    seminar.Date = seminarVM.Date;
+                    seminar.Location = seminarVM.Location;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return "Not Found";
+
+                }
+            }
+
+            return "Ok";
+
         }
 
         // DELETE api/<SeminarController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            using(var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.Where(s => s.SeminarId == id).FirstOrDefault();
+
+                if (seminar != null)
+                {
+                    context.Seminars.Remove(seminar);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return "Not Found";
+                }
+                return "Ok";
+            }
         }
     }
 }

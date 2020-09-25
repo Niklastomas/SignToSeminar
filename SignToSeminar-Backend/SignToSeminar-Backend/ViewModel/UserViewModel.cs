@@ -10,7 +10,6 @@ namespace SignToSeminar_Backend.ViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int SeminarId { get; set; }
         public List<Seminar> SeminarList { get; set; }
 
     }
