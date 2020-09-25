@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\Niklas\\Documents\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj": {}
+    "C:\\Users\\Rasmu\\Documents\\SignToSeminar\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj": {}
   },
   "projects": {
-    "D:\\Users\\Niklas\\Documents\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj": {
+    "C:\\Users\\Rasmu\\Documents\\SignToSeminar\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\Niklas\\Documents\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj",
+        "projectUniqueName": "C:\\Users\\Rasmu\\Documents\\SignToSeminar\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj",
         "projectName": "SignToSeminar-Backend",
-        "projectPath": "D:\\Users\\Niklas\\Documents\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj",
-        "packagesPath": "C:\\Users\\Niklas\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\Niklas\\Documents\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\obj\\",
+        "projectPath": "C:\\Users\\Rasmu\\Documents\\SignToSeminar\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\SignToSeminar-Backend.csproj",
+        "packagesPath": "C:\\Users\\Rasmu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rasmu\\Documents\\SignToSeminar\\SignToSeminar\\SignToSeminar-Backend\\SignToSeminar-Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Niklas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Rasmu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -74,12 +75,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -88,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

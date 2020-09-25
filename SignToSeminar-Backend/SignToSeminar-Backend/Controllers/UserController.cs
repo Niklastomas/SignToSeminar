@@ -22,11 +22,13 @@ namespace SignToSeminar_Backend.Controllers
             using (var context = new ApplicationDbContext())
             {
 
-                //var user = context.Users.ToList();
-                //return user;
-                var user = context.Users.Include(u => u.UserSeminars).ToArray();
+                var user = context.Users.ToArray();
                 return user;
-                
+
+
+                //var user = context.Users.Include(u => u.UserSeminars).ToArray();
+                //return user;
+
             }
         }
 
@@ -95,8 +97,24 @@ namespace SignToSeminar_Backend.Controllers
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            using (var context = new ApplicationDbContext())
+            {
+                var user = context.Users.Where(u => u.UserId == id).FirstOrDefault<User>();
+                if (user != null)
+                {
+                    context.Users.Remove(user);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return "NOT FOUND";
+                }
+
+                return "OK";
+
+            }
         }
     }
 }

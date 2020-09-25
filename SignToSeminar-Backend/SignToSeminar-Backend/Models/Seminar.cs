@@ -10,7 +10,7 @@ namespace SignToSeminar_Backend.Models
       
         public int SeminarId { get; set; }
         public string Title { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string Location { get; set; }
 
         public IList<UserSeminar> UserSeminars { get; set; }

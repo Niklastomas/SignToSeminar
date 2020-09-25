@@ -15,24 +15,54 @@ namespace SignToSeminar_Backend.Controllers
     [ApiController]
     public class SeminarController : ControllerBase
     {
-        // GET: api/<SeminarController>
+        //GET: api/<SeminarController>
         [HttpGet]
-        //public IEnumerable<Seminar> Get()
-        //{
-        //    using (var context = new ApplicationDbContext())
-        //    {
-        //        //var seminar = context.Seminars.Include(s => s.UserList).ToArray();
-        //        //return "seminar";
+        public IEnumerable<Seminar> Get()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.ToArray();
+                return seminar;
 
-        //    }
-        //}
+            }
+        }
 
         // GET api/<SeminarController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{id:int}")]
+        public Seminar Get(int id)
         {
-            return "value";
+            using (var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.Where(s => s.SeminarId == id).FirstOrDefault();
+
+                return seminar;
+            }       
         }
+        
+        [HttpGet("{title}")]
+        public IEnumerable<Seminar> Get(string title)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.Where(s => s.Title == title).ToArray();
+
+                return seminar;
+            }
+
+
+        }
+
+        [HttpGet("{date:DateTime}")]
+        public IEnumerable<Seminar> Get(DateTime date)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var seminar = context.Seminars.Where(s => s.Date >= date).ToArray();
+
+                return seminar;
+            }
+        }
+
 
         // POST api/<SeminarController>
         [HttpPost]
