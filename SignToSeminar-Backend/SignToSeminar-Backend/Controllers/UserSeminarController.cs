@@ -31,7 +31,7 @@ namespace SignToSeminar_Backend.Controllers
         }
 
         // GET api/<UserSeminarController>/5
-        [HttpGet("user/{id}")]
+        [HttpGet("user/{id:int}")]
         public UserViewModel Get(int id)
         {
             using(var context = new ApplicationDbContext())
@@ -65,11 +65,57 @@ namespace SignToSeminar_Backend.Controllers
             }
         }
 
+
+        [HttpGet ("seminar/{title}")]
+        public SeminarViewModel Get(string title)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var users = new List<User>();
+
+                var seminar = context.UserSeminars.Where(s => s.Seminar.Title == title).Include(s => s.Seminar).FirstOrDefault();
+
+                var seminarVM = new SeminarViewModel
+                {
+                    Title = seminar.Seminar.Title,
+                    Date = seminar.Seminar.Date,
+                    Location = seminar.Seminar.Location
+                };
+
+
+                var userSeminars = context.UserSeminars.Where(s => s.Seminar.Title == title).Include(s => s.User).ToArray();
+
+                foreach (var userSeminar in userSeminars)
+                {
+                    if (userSeminar.Seminar != null)
+                    {
+                        users.Add(userSeminar.User);
+
+                    }
+
+                }
+                seminarVM.UserList = users;
+
+                return seminarVM;
+
+            }
+        }
+
         // POST api/<UserSeminarController>
         [HttpPost]
-        public void Post([FromBody] UserSeminar us)
+        public void Post([FromBody] UserSeminarViewModel us)
         {
-          
+            using(var context = new ApplicationDbContext())
+            {
+                var userSeminar = new UserSeminar
+                {
+                    SeminarId = us.SeminarId,
+                    UserId = us.UserId
+                };
+
+                context.UserSeminars.Add(userSeminar);
+                context.SaveChanges();
+            }
        
         }
 
@@ -80,9 +126,24 @@ namespace SignToSeminar_Backend.Controllers
         }
 
         // DELETE api/<UserSeminarController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public string Delete(UserSeminarViewModel us)
         {
+            using(var context = new ApplicationDbContext())
+            {
+                var userSeminar = context.UserSeminars.Where(x => x.SeminarId == us.SeminarId).Where(y => y.UserId == us.UserId).FirstOrDefault();
+                
+                if(userSeminar != null)
+                {
+                    context.UserSeminars.Remove(userSeminar);
+                    context.SaveChanges();
+                    return "Ok";
+                } 
+                else
+                {
+                    return "Not Found";
+                }
+            }
         }
     }
 }
