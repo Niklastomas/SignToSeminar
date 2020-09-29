@@ -31,8 +31,8 @@ namespace SignToSeminar_Backend.Controllers
         }
 
         // GET api/<UserSeminarController>/5
-        [HttpGet("user/{id:int}")]
-        public UserViewModel Get(int id)
+        [HttpGet("[action]/{id}")]
+        public UserViewModel GetUser(int id)
         {
             using(var context = new ApplicationDbContext())
             {
@@ -66,14 +66,14 @@ namespace SignToSeminar_Backend.Controllers
         }
 
 
-        [HttpGet ("seminar/{title}")]
-        public SeminarViewModel Get(string title)
+        [HttpGet ("[action]/{id}")]
+        public SeminarViewModel GetSeminar(int id)
         {
             using (var context = new ApplicationDbContext())
             {
                 var users = new List<User>();
 
-                var seminar = context.UserSeminars.Where(s => s.Seminar.Title == title).Include(s => s.Seminar).FirstOrDefault();
+                var seminar = context.UserSeminars.Where(s => s.Seminar.SeminarId == id).Include(s => s.Seminar).FirstOrDefault();
 
                 var seminarVM = new SeminarViewModel
                 {
@@ -83,7 +83,7 @@ namespace SignToSeminar_Backend.Controllers
                 };
 
 
-                var userSeminars = context.UserSeminars.Where(s => s.Seminar.Title == title).Include(s => s.User).ToArray();
+                var userSeminars = context.UserSeminars.Where(s => s.Seminar.SeminarId == id).Include(s => s.User).ToArray();
 
                 foreach (var userSeminar in userSeminars)
                 {
