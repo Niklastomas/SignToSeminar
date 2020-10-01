@@ -93,6 +93,7 @@ namespace SignToSeminar_Backend.Controllers
                     seminar.Date = seminarVM.Date;
                     seminar.Location = seminarVM.Location;
                     context.SaveChanges();
+
                 }
                 else
                 {
