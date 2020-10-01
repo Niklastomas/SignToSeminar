@@ -80,9 +80,22 @@ namespace SignToSeminar_Backend.Controllers
 
                 if (user != null)
                 {
-                    user.FirstName = userVM.FirstName;
-                    user.LastName = userVM.LastName;
-                    context.SaveChanges();
+                    if(user.FirstName != userVM.FirstName)
+                    {
+                        user.FirstName = userVM.FirstName;
+                        context.SaveChanges();
+                    }
+                    else if(user.LastName != userVM.LastName) 
+                    {
+                        user.LastName = userVM.LastName;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        user.FirstName = userVM.FirstName;
+                        user.LastName = userVM.LastName;
+                        context.SaveChanges();
+                    }
                 }
                 else
                 {

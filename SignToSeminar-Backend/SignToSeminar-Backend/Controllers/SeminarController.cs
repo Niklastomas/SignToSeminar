@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -89,11 +90,28 @@ namespace SignToSeminar_Backend.Controllers
 
                 if (seminar != null)
                 {
-                    seminar.Title = seminarVM.Title;
-                    seminar.Date = seminarVM.Date;
-                    seminar.Location = seminarVM.Location;
-                    context.SaveChanges();
-
+                    if(seminar.Title != seminarVM.Title)
+                    {
+                        seminar.Title = seminarVM.Title;
+                        context.SaveChanges();
+                    }
+                    else if(seminar.Date != seminarVM.Date)
+                    {
+                        seminar.Date = seminarVM.Date;
+                        context.SaveChanges();
+                    }
+                    else if (seminar.Location != seminarVM.Location)
+                    {
+                        seminar.Location = seminarVM.Location;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        seminar.Title = seminarVM.Title;
+                        seminar.Date = seminarVM.Date;
+                        seminar.Location = seminarVM.Location;
+                        context.SaveChanges();
+                    }
                 }
                 else
                 {
