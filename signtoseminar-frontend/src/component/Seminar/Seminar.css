@@ -1,0 +1,16 @@
+.seminar {
+  background-color: white;
+  height: auto;
+  width: 80%;
+  margin: 20px auto;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.45);
+}
+
+.seminar h3 {
+}

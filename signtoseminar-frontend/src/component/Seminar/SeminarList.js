@@ -1,33 +1,26 @@
-import React from 'react'
-import "./SeminarList.css"
+import React from "react";
+import "./SeminarList.css";
+import Seminar from "./Seminar";
 
-
-function Seminar() {
-    return (
-        
-     <div className="seminarie">
-        <h1>Seminarie</h1>
-        <ul>
-          <li>
-            <a href=""> Seminarie 1 </a>
-          </li>
-          <li>
-            <a href=""> Seminarie 2 </a>
-          </li>
-          <li>
-            <a href=""> Seminarie 3 </a>
-          </li>
-          <li>
-            <a href=""> Seminarie 4 </a>
-          </li>
-          <li>
-            <a href=""> Seminarie 5 </a>
-          </li>
-        </ul>
-      </div>
-        
-        
-    )
+function SeminarList() {
+  const seminars = [
+    { title: "Matte", date: "2020-12-11", location: "Göteborg" },
+    { title: "Matte", date: "2020-12-11", location: "Göteborg" },
+    { title: "Matte", date: "2020-12-11", location: "Göteborg" },
+    { title: "Matte", date: "2020-12-11", location: "Göteborg" },
+  ];
+  return (
+    <div className="seminarie">
+      <h1>Seminarie</h1>
+      {seminars.map((seminar) => (
+        <Seminar
+          title={seminar.title}
+          date={seminar.date}
+          location={seminar.location}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default Seminar
+export default SeminarList;
