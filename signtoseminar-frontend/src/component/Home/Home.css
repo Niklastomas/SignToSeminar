@@ -1,0 +1,19 @@
+.home {
+    background: rgb(0 0 0 / 40%);
+    width: 40%;
+    height: 40%;
+    margin: 100px auto 90px auto;
+    border-radius: 10px;
+    box-shadow: 14px 10px 14px 1px rgba(0, 0, 0, 0.75);
+    font-family: "Ubuntu", sans-serif;
+    text-align: center;
+    color: white;
+  }
+  
+  .home h1 {
+    padding-top: 20px;
+  }
+  
+  .home p {
+    padding: 0 20px;
+  }

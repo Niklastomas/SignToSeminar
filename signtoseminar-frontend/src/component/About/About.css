@@ -1,0 +1,19 @@
+.about {
+    background: rgb(0 0 0 / 40%);
+    width: 600px;
+    height: 400px;
+    margin: 100px auto 90px auto;
+    border-radius: 10px;
+    box-shadow: 14px 10px 14px 1px rgba(0, 0, 0, 0.75);
+    font-family: "Ubuntu", sans-serif;
+    color: white;
+    text-align: center;
+  }
+  
+  .about h1 {
+    padding-top: 20px;
+  }
+  
+  .about p {
+    padding: 0 20px;
+  }
