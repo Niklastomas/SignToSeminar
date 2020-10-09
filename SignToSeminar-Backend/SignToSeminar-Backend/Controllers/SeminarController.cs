@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignToSeminar_Backend.Models;
 using SignToSeminar_Backend.ViewModel;
 
+
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SignToSeminar_Backend.Controllers
 {
+    [EnableCors ("AnotherPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class SeminarController : ControllerBase
     {
         //GET: api/<SeminarController>
+        [EnableCors ("AnotherPolicy")]
         [HttpGet]
         public IEnumerable<Seminar> Get()
         {

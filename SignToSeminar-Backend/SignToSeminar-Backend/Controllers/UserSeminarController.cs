@@ -18,6 +18,7 @@ namespace SignToSeminar_Backend.Controllers
     public class UserSeminarController : ControllerBase
     {
         // GET: api/<UserSeminarController>
+
         [HttpGet]
         public IEnumerable<UserSeminar> Get()
         {
