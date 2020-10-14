@@ -35,23 +35,14 @@ namespace SignToSeminar_Backend
           options => {
               options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
           });
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Policy1",
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:3000",
-                                            "http://www.contoso.com/%22");
-                    });
 
-                options.AddPolicy("AnotherPolicy",
-                    builder =>
-                    {
-                        builder.WithOrigins("http://localhost:3000")
-                                            .AllowAnyHeader()
-                                            .AllowAnyMethod();
-                    });
-            });
+            services.AddCors(o => o.AddPolicy("CORSPolicy", builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
+
+
+
 
 
         }
@@ -70,11 +61,13 @@ namespace SignToSeminar_Backend
 
             app.UseAuthorization();
 
+            app.UseCors("CORSPolicy");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            app.UseCors();
+            
         }
     }
 }

@@ -14,8 +14,9 @@ using SignToSeminar_Backend.ViewModel;
 
 namespace SignToSeminar_Backend.Controllers
 {
-    [EnableCors ("AnotherPolicy")]
+   
     [Route("api/[controller]")]
+    [EnableCors("CORSPolicy")]
     [ApiController]
     public class SeminarController : ControllerBase
     {
