@@ -21,7 +21,6 @@ namespace SignToSeminar_Backend.Controllers
     public class SeminarController : ControllerBase
     {
         //GET: api/<SeminarController>
-        [EnableCors ("AnotherPolicy")]
         [HttpGet]
         public IEnumerable<Seminar> Get()
         {

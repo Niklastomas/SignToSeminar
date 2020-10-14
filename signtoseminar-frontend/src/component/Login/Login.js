@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import "./Login.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Login.css';
+import firebase from '../../firebase';
 
 function Login() {
   const [input, setInput] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
 
   const handleChange = (event) => {
@@ -19,28 +21,43 @@ function Login() {
     console.log(input);
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(input.username, input.password)
+      .then((auth) => console.log(auth))
+      .catch((error) => alert(error.message));
+
+    setInput({
+      username: '',
+      password: '',
+    });
+  };
+
   return (
-    <div class="login">
+    <div class='login'>
       <h1>LOGGA IN</h1>
-      <form onsubmit="">
-        <label for="username"> Username </label>
+      <form>
+        <label for='username'> Username </label>
         <input
           onChange={handleChange}
-          type="text"
-          name="username"
+          type='text'
+          name='username'
           value={input.username}
         />
-        <label for="password"> Password </label>
+        <label for='password'> Password </label>
         <input
           onChange={handleChange}
-          type="password"
-          name="password"
+          type='password'
+          name='password'
           value={input.password}
         />
-        <button type="submit">Logga in</button>
+        <button onClick={handleClick}>Logga in</button>
       </form>
       <p>
-        Register? <a href="registration.html">Click here!</a>
+        <Link to='/register'>Dont have an account? Click Here!</Link>
       </p>
     </div>
   );

@@ -5,9 +5,17 @@
   margin: 200px auto 90px auto;
   border-radius: 10px;
   box-shadow: 14px 10px 14px 1px rgba(0, 0, 0, 0.75);
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: white;
   text-align: center;
+}
+
+.seminarieInfo h1 {
+  padding: 20px;
+}
+
+.seminarieInfo h3 {
+  margin-left: 10px;
 }
 .seminarieInfo button {
   border-radius: 5px;
@@ -20,4 +28,10 @@
 .seminarieInfo a {
   text-decoration: none;
   color: black;
+}
+
+.seminarInfo__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
