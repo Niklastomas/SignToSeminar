@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignToSeminar_Backend.Models;
@@ -12,6 +13,7 @@ using SignToSeminar_Backend.ViewModel;
 namespace SignToSeminar_Backend.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("CORSPolicy")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -36,7 +38,7 @@ namespace SignToSeminar_Backend.Controllers
 
 
         // GET api/<UserController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public User Get(int id)
         {
            using (var context = new ApplicationDbContext())
@@ -56,6 +58,26 @@ namespace SignToSeminar_Backend.Controllers
             }
         }
 
+        [HttpGet("{email}")]
+        public User Get(string email)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+
+                var user = context.Users.Where(u => u.Email == email).FirstOrDefault<User>();
+
+                if (user != null)
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
         // POST api/<UserController>
         [HttpPost]
         public void Post([FromBody] UserViewModel u)
@@ -63,7 +85,7 @@ namespace SignToSeminar_Backend.Controllers
 
             using (var context = new ApplicationDbContext())
             {
-                var newUser = new User { FirstName = u.FirstName, LastName = u.LastName };
+                var newUser = new User { FirstName = u.FirstName, LastName = u.LastName, Email = u.Email };
                 context.Users.Add(newUser);
                 context.SaveChanges();
 

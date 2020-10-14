@@ -66,6 +66,8 @@ namespace SignToSeminar_Backend.Controllers
             }
         }
 
+        
+
 
         [HttpGet ("[action]/{id}")]
         public SeminarViewModel GetSeminar(int id)
