@@ -10,7 +10,8 @@ function Registration() {
     username: '',
     password: '',
     confirmPassword: '',
-    fullname: '',
+    firstName: '',
+    lastName: '',
   });
 
   const handleChange = (event) => {
@@ -26,13 +27,29 @@ function Registration() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log('hej');
     firebase
       .auth()
       .createUserWithEmailAndPassword(input.username, input.password)
       .then((auth) => {
-        console.log(auth);
-        history.push('/');
+        if (auth) {
+          fetch('https://localhost:44320/api/user', {
+            method: 'post',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              Email: input.username,
+              FirstName: input.firstName,
+              LastName: input.lastName,
+            }),
+          })
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            .catch((error) => alert(error.message));
+
+          history.push('/');
+        }
       })
       .catch((error) => alert(error.message));
 
@@ -40,7 +57,8 @@ function Registration() {
       username: '',
       password: '',
       confirmPassword: '',
-      fullname: '',
+      firstName: '',
+      lastName: '',
     });
   };
 
@@ -48,7 +66,7 @@ function Registration() {
     <div className='registration'>
       <h1>Registration</h1>
       <form>
-        <label htmlFor='E-mail'> Enter email </label>
+        <label htmlFor='email'> Enter email </label>
         <input
           onChange={handleChange}
           type='email'
@@ -69,12 +87,19 @@ function Registration() {
           name='confirmPassword'
           value={input.confirmPassword}
         />
-        <label htmlFor='Name'> Enter full name </label>
+        <label htmlFor='firstName'> Enter first name </label>
         <input
           onChange={handleChange}
           type='text'
-          name='fullname'
-          value={input.fullname}
+          name='firstName'
+          value={input.firstName}
+        />
+        <label htmlFor='lastName'> Enter last name </label>
+        <input
+          onChange={handleChange}
+          type='text'
+          name='lastName'
+          value={input.lastName}
         />
 
         <button onClick={handleClick}>Register</button>

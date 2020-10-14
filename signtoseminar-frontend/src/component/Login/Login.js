@@ -27,7 +27,14 @@ function Login() {
     firebase
       .auth()
       .signInWithEmailAndPassword(input.username, input.password)
-      .then((auth) => console.log(auth))
+      .then((auth) => {
+        if (auth) {
+          fetch(`https://localhost:44320/api/user/${auth.user.email}`)
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            .catch((error) => console.log(error));
+        }
+      })
       .catch((error) => alert(error.message));
 
     setInput({
@@ -37,17 +44,17 @@ function Login() {
   };
 
   return (
-    <div class='login'>
+    <div className='login'>
       <h1>LOGGA IN</h1>
       <form>
-        <label for='username'> Username </label>
+        <label htmlFor='username'> Username </label>
         <input
           onChange={handleChange}
           type='text'
           name='username'
           value={input.username}
         />
-        <label for='password'> Password </label>
+        <label htmlFor='password'> Password </label>
         <input
           onChange={handleChange}
           type='password'
