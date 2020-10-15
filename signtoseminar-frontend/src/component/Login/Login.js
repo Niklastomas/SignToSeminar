@@ -30,11 +30,6 @@ function Login() {
       .signInWithEmailAndPassword(input.username, input.password)
       .then((auth) => {
         if (auth) {
-          fetch(`https://localhost:44320/api/user/${auth.user.email}`)
-            .then((response) => response.json())
-            .then((json) => console.log(json))
-            .catch((error) => console.log(error));
-
           history.push('/');
         }
       })
@@ -48,7 +43,7 @@ function Login() {
 
   return (
     <div className='login'>
-      <h1>LOGGA IN</h1>
+      <h1>Login</h1>
       <form>
         <label htmlFor='username'> Username </label>
         <input
