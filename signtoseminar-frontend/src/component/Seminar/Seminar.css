@@ -1,5 +1,5 @@
 .seminar {
-  background-color: white;
+  background-color: whitesmoke;
   height: auto;
   width: 80%;
   margin: 20px auto;
@@ -10,6 +10,13 @@
   padding: 10px;
   border-radius: 10px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.45);
+  transition: ease 150ms;
+}
+
+.seminar:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+  cursor: pointer;
 }
 
 .seminar h3 {

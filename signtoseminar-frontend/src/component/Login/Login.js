@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Login.css';
 import firebase from '../../firebase';
 
 function Login() {
+  const history = useHistory();
   const [input, setInput] = useState({
     username: '',
     password: '',
@@ -33,6 +34,8 @@ function Login() {
             .then((response) => response.json())
             .then((json) => console.log(json))
             .catch((error) => console.log(error));
+
+          history.push('/');
         }
       })
       .catch((error) => alert(error.message));

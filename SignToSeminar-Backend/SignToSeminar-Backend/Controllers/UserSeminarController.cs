@@ -33,19 +33,19 @@ namespace SignToSeminar_Backend.Controllers
 
         // GET api/<UserSeminarController>/5
         [HttpGet("[action]/{id}")]
-        public UserViewModel GetUser(int id)
+        public List<Seminar> GetUser(int id)
         {
             using(var context = new ApplicationDbContext())
             {
                 var seminars = new List<Seminar>();
 
-                var user = context.UserSeminars.Where(u => u.UserId == id).Include(u => u.User).FirstOrDefault();
+                //var user = context.UserSeminars.Where(u => u.UserId == id).Include(u => u.User).FirstOrDefault();
 
-                var userVM = new UserViewModel
-                {
-                    FirstName = user.User.FirstName,
-                    LastName = user.User.LastName
-                };
+                //var userVM = new UserViewModel
+                //{
+                //    FirstName = user.User.FirstName,
+                //    LastName = user.User.LastName
+                //};
 
 
                 var userSeminars = context.UserSeminars.Where(u => u.UserId == id).Include(u => u.Seminar).ToArray();
@@ -59,9 +59,9 @@ namespace SignToSeminar_Backend.Controllers
                     }
                     
                 }
-                userVM.SeminarList = seminars;
+                //userVM.SeminarList = seminars;
                 
-                return userVM;
+                return seminars;
 
             }
         }
@@ -106,7 +106,7 @@ namespace SignToSeminar_Backend.Controllers
 
         // POST api/<UserSeminarController>
         [HttpPost]
-        public void Post([FromBody] UserSeminarViewModel us)
+        public string Post([FromBody] UserSeminarViewModel us)
         {
             using(var context = new ApplicationDbContext())
             {
@@ -116,8 +116,20 @@ namespace SignToSeminar_Backend.Controllers
                     UserId = us.UserId
                 };
 
-                context.UserSeminars.Add(userSeminar);
-                context.SaveChanges();
+                var existingUserSeminar = context.UserSeminars.Where(x => x.SeminarId == us.SeminarId).Where(y => y.UserId == us.UserId).FirstOrDefault();
+
+                if (existingUserSeminar == null)
+                {
+                    context.UserSeminars.Add(userSeminar);
+                    context.SaveChanges();
+                    return "Successfully signed up to seminar";
+                }
+                else
+                {
+                    return "Already signed up";
+                }
+
+                
             }
        
         }

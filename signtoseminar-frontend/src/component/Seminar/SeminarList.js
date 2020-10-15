@@ -3,25 +3,27 @@ import './SeminarList.css';
 import Seminar from './Seminar';
 import { Link } from 'react-router-dom';
 
-function SeminarList() {
+function SeminarList({ url, title }) {
   const [seminars, setSeminars] = useState([]);
 
   useEffect(() => {
-    fetch('https://localhost:44320/api/seminar')
+    fetch(url)
       .then((response) => response.json())
       .then((json) => setSeminars(json))
       // .then((json) => console.log(json))
       .catch((error) => console.log(error));
+    console.log('useEffect');
 
     console.log(seminars);
-  }, []);
+  }, [url]);
 
   return (
     <div className='seminarie'>
-      <h1>Seminarie</h1>
-      {seminars &&
+      <h1>{title}</h1>
+      {seminars.length > 0 &&
         seminars.map((seminar) => (
           <Seminar
+            key={seminar.userId}
             id={seminar.seminarId}
             title={seminar.title}
             date={seminar.date.substring(0, 10)}

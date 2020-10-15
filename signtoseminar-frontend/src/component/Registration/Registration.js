@@ -46,7 +46,7 @@ function Registration() {
           })
             .then((response) => response.json())
             .then((json) => console.log(json))
-            .catch((error) => alert(error.message));
+            .catch((error) => console.log(error.message));
 
           history.push('/');
         }

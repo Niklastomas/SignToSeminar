@@ -17,14 +17,14 @@
 .seminarieInfo h3 {
   margin-left: 10px;
 }
-.seminarieInfo button {
+/* .seminarieInfo button {
   border-radius: 5px;
   background-color: white;
 }
 .seminarieInfo button:hover {
   background-color: grey;
   cursor: pointer;
-}
+} */
 .seminarieInfo a {
   text-decoration: none;
   color: black;
