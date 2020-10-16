@@ -19,7 +19,6 @@ function Login() {
         [name]: value,
       };
     });
-    console.log(input);
   };
 
   const handleClick = (e) => {

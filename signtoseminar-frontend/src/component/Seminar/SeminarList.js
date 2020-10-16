@@ -12,9 +12,6 @@ function SeminarList({ url, title }) {
       .then((json) => setSeminars(json))
       // .then((json) => console.log(json))
       .catch((error) => console.log(error));
-    console.log('useEffect');
-
-    console.log(seminars);
   }, [url]);
 
   return (
@@ -28,6 +25,7 @@ function SeminarList({ url, title }) {
             title={seminar.title}
             date={seminar.date.substring(0, 10)}
             location={seminar.location}
+            link={false}
           />
         ))}
     </div>

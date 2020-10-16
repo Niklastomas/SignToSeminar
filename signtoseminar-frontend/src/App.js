@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Home from './component/Home/Home';
 import About from './component/About/About';
@@ -7,7 +7,6 @@ import Navbar from './component/Navbar/Navbar';
 import Registration from './component/Registration/Registration';
 import SeminarList from './component/Seminar/SeminarList';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import SeminarInfo from './component/Seminar/SeminarInfo';
 import firebase from './firebase';
@@ -15,8 +14,6 @@ import { setUser } from './userSlice';
 import UserSeminar from './component/User/UserSeminar';
 
 function App() {
-  // const [user, setUser] = useState({});
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,11 +38,7 @@ function App() {
 
         <Switch>
           <Route path='/seminar/info/:id'>
-            <SeminarInfo
-            // title='Matte'
-            // location='Goterborg'
-            // date='2020-12-23:12:00'
-            />
+            <SeminarInfo />
           </Route>
 
           <Route path='/about'>

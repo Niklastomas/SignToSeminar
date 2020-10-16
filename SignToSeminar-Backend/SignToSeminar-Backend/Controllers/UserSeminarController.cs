@@ -103,6 +103,25 @@ namespace SignToSeminar_Backend.Controllers
 
             }
         }
+        [HttpPost("[action]")]
+        public Boolean CheckIfSignedUp(UserSeminarViewModel us)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var existingUserSeminar = context.UserSeminars.Where(x => x.SeminarId == us.SeminarId).Where(y => y.UserId == us.UserId).FirstOrDefault();
+
+                if (existingUserSeminar == null)
+                {
+                   
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+        }
 
         // POST api/<UserSeminarController>
         [HttpPost]

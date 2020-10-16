@@ -18,17 +18,35 @@ function SeminarInfo() {
   const [seminar, setSeminar] = useState({});
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [signedUp, setSignedUp] = useState(null);
   const history = useHistory();
 
   useEffect(() => {
+    console.log('useEffect');
     fetch(`https://localhost:44320/api/seminar/${id}`)
       .then((response) => response.json())
       .then((json) => setSeminar(json))
-      // .then((json) => console.log(json))
       .catch((error) => console.log(error));
-  }, []);
 
-  const handleClick = () => {
+    if (user) {
+      fetch('https://localhost:44320/api/userSeminar/CheckIfSignedUp', {
+        method: 'post',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          seminarId: id,
+          userId: user.userId,
+        }),
+      })
+        .then((response) => response.json())
+        .then((json) => setSignedUp(json))
+        .catch((error) => console.log(error.message));
+    }
+  }, [success, id, user]);
+
+  const handleSignUp = () => {
     fetch('https://localhost:44320/api/userseminar', {
       method: 'post',
       headers: {
@@ -44,11 +62,36 @@ function SeminarInfo() {
       .then((json) => {
         if (json !== 'Successfully signed up to seminar') {
           setError(json);
+          setSignedUp(true);
         } else {
           setSuccess(json);
+          setSignedUp(false);
         }
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => setError(error.message));
+  };
+
+  const handleUnsubscribe = () => {
+    fetch('https://localhost:44320/api/userseminar', {
+      method: 'delete',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        seminarId: id,
+        userId: user.userId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        if (json === 'Ok') {
+          setSignedUp(false);
+        } else {
+          setSignedUp(true);
+        }
+      })
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -74,14 +117,27 @@ function SeminarInfo() {
         <h3>{seminar.date && seminar.date.substring(11, 16)}</h3>
       </div>
 
-      <Button
-        onClick={handleClick}
-        style={{ margin: 15 }}
-        variant='contained'
-        color='primary'
-      >
-        Sign Up
-      </Button>
+      {signedUp ? (
+        <Button
+          onClick={handleUnsubscribe}
+          style={{ margin: 15 }}
+          variant='contained'
+          color='secondary'
+          disabled={user ? false : true}
+        >
+          Unsubscribe
+        </Button>
+      ) : (
+        <Button
+          onClick={handleSignUp}
+          style={{ margin: 15 }}
+          variant='contained'
+          color='primary'
+          disabled={user ? false : true}
+        >
+          Sign Up
+        </Button>
+      )}
 
       <Button
         onClick={() => history.push('/seminar')}
