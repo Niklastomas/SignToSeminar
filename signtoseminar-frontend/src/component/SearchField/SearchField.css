@@ -1,0 +1,16 @@
+.searchField {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  margin: 10px auto;
+  display: flex;
+  border-radius: 7px;
+  background-color: white;
+  align-items: center;
+}
+
+.searchField input {
+  border: none;
+  outline-style: none;
+  height: 30px;
+}
