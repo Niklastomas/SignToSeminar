@@ -3,6 +3,7 @@ import './SeminarList.css';
 import Seminar from './Seminar';
 import { Link } from 'react-router-dom';
 import SearchField from '../SearchField/SearchField';
+import Checkbox from '../Checkbox/Checkbox';
 
 function SeminarList({ url, title }) {
   const [seminars, setSeminars] = useState([]);
@@ -29,10 +30,17 @@ function SeminarList({ url, title }) {
     setSearchTerm(searchText);
   };
 
+  const handleCheckboxChange = (checked) => {
+    setFilteredSeminars((seminars) => {
+      return [...seminars.reverse()];
+    });
+  };
+
   return (
     <div className='seminarie'>
       <h1>{title}</h1>
       <SearchField handleSearchChange={handleSearchChange} />
+      <Checkbox handleCheckboxChange={handleCheckboxChange} />
       {seminars.length > 0 &&
         filteredSeminars.map((seminar) => (
           <Seminar

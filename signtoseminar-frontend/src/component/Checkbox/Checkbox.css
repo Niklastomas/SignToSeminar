@@ -1,0 +1,9 @@
+.checkbox {
+  display: flex;
+  justify-content: center;
+}
+
+.checkbox input {
+  transform: scale(1.4);
+  margin-left: 10px;
+}

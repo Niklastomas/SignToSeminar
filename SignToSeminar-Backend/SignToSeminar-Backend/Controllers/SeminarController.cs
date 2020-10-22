@@ -26,7 +26,7 @@ namespace SignToSeminar_Backend.Controllers
         {
             using (var context = new ApplicationDbContext())
             {
-                var seminar = context.Seminars.ToArray();
+                var seminar = context.Seminars.OrderBy(s => s.Date).ToArray();
                 return seminar;
 
             }
